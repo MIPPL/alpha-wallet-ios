@@ -152,9 +152,9 @@ struct TokenCardRowViewModel: TokenCardRowViewModelProtocol {
         let xmlHandler = XMLHandler(contract: tokenHolder.contractAddress, assetDefinitionStore: assetDefinitionStore)
         switch tokenView {
         case .view:
-            return wrapWithHtmlViewport(xmlHandler.tokenViewHtml)
+            return wrapWithHtmlViewport(xmlHandler.tokenViewHtml, forTokenHolder: tokenHolder)
         case .viewIconified:
-            return wrapWithHtmlViewport(xmlHandler.tokenViewIconifiedHtml)
+            return wrapWithHtmlViewport(xmlHandler.tokenViewIconifiedHtml, forTokenHolder: tokenHolder)
         }
     }
 

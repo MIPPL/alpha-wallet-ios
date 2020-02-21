@@ -61,23 +61,21 @@ struct TokenInstanceAction {
     var hasTransactionFunction: Bool {
         return transactionFunction != nil
     }
-    //TODO storing this means we can't live-reload the action view screen
-    let viewHtml: String
     let type: ActionType
 
-    init(type: ActionType) {
-        self.type = type
+    //TODO we can live-reload the action view screen now if we observe for changes
+    func viewHtml(forTokenHolder tokenHolder: TokenHolder) -> String {
         switch type {
         case .erc20Send, .erc20Receive:
-            self.viewHtml = ""
+            return ""
         case .nftRedeem:
-            self.viewHtml = ""
+            return ""
         case .nftSell:
-            self.viewHtml = ""
+            return ""
         case .nonFungibleTransfer:
-            self.viewHtml = ""
+            return ""
         case .tokenScript(_, _, let viewHtml, _, _):
-            self.viewHtml = wrapWithHtmlViewport(viewHtml)
+            return wrapWithHtmlViewport(viewHtml, forTokenHolder: tokenHolder)
         }
     }
 }

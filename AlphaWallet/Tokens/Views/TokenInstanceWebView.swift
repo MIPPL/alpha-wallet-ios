@@ -114,11 +114,12 @@ class TokenInstanceWebView: UIView {
 //        string += "\n}"
 //        string += "\n}"
 
+        let containerCssId = generateContainerCssId(forTokenHolder: tokenHolder)
         string += """
-                  \nweb3.tokens.dataChanged(oldTokens, web3.tokens.data)
+                  \nweb3.tokens.dataChanged(oldTokens, web3.tokens.data, "\(containerCssId)")
                   """
         let javaScript = """
-                         console.log('update() ran')
+                         console.log(`update() ran`)
                          const oldTokens = web3.tokens.data
                          """ + string
 
@@ -378,19 +379,35 @@ extension TokenInstanceWebView {
     }
 }
 
-func wrapWithHtmlViewport(_ html: String) -> String {
+private func generateContainerCssId(forTokenHolder tokenHolder: TokenHolder) -> String {
+    //TODO this assumes tokenId is unique within an instance
+    return generateContainerCssId(forTokenId: tokenHolder.tokenIds[0])
+}
+
+private func generateContainerCssId(forTokenId tokenId: TokenId) -> String {
+    return "token-card-\(tokenId)"
+}
+
+func wrapWithHtmlViewport(_ html: String, forTokenId tokenId: TokenId) -> String {
     if html.isEmpty {
         return ""
     } else {
+        let containerCssId = generateContainerCssId(forTokenId: tokenId)
         return """
                <html>
                <head>
                <meta name="viewport" content="width=device-width, initial-scale=1,  maximum-scale=1, shrink-to-fit=no">
                </head>
+               <div id="\(containerCssId)" class="token-card">
                \(html)
+               </div>
                </html>
                """
     }
+}
+
+func wrapWithHtmlViewport(_ html: String, forTokenHolder tokenHolder: TokenHolder) -> String {
+    return wrapWithHtmlViewport(html, forTokenId: tokenHolder.tokenIds[0])
 }
 
 extension String {
