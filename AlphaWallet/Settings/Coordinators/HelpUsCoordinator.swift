@@ -54,6 +54,7 @@ class HelpUsCoordinator: Coordinator {
         )
         activityViewController.popoverPresentationController?.sourceView = sender
         activityViewController.popoverPresentationController?.sourceRect = sender.centerRect
+        activityViewController.modalPresentationStyle = .fullScreen
         viewController.present(activityViewController, animated: true, completion: nil)
     }
 }

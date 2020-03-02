@@ -92,6 +92,7 @@ class TokensCardCoordinator: NSObject, Coordinator {
 
     private func makeTokensCardViewController(with account: Wallet, viewModel: TokensCardViewModel) -> TokensCardViewController {
         let controller = TokensCardViewController(tokenObject: token, account: account, tokensStorage: tokensStorage, assetDefinitionStore: assetDefinitionStore, viewModel: viewModel)
+        controller.modalPresentationStyle = .fullScreen
         controller.delegate = self
         return controller
     }
@@ -105,6 +106,7 @@ class TokensCardCoordinator: NSObject, Coordinator {
                                                                 in viewController: TransferTokensCardQuantitySelectionViewController) {
         let vc = makeChooseTokenCardTransferModeViewController(token: token, for: tokenHolder, paymentFlow: viewController.paymentFlow)
         vc.navigationItem.largeTitleDisplayMode = .never
+        vc.modalPresentationStyle = .fullScreen
         viewController.navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -113,6 +115,7 @@ class TokensCardCoordinator: NSObject, Coordinator {
                                             ethCost: Ether,
                                             in viewController: SetSellTokensCardExpiryDateViewController) {
         let vc = makeGenerateSellMagicLinkViewController(paymentFlow: viewController.paymentFlow, tokenHolder: tokenHolder, ethCost: ethCost, linkExpiryDate: linkExpiryDate)
+        vc.modalPresentationStyle = .fullScreen
         viewController.navigationController?.present(vc, animated: true)
     }
 
@@ -120,6 +123,7 @@ class TokensCardCoordinator: NSObject, Coordinator {
                                                 linkExpiryDate: Date,
                                                 in viewController: SetTransferTokensCardExpiryDateViewController) {
         let vc = makeGenerateTransferMagicLinkViewController(paymentFlow: viewController.paymentFlow, tokenHolder: tokenHolder, linkExpiryDate: linkExpiryDate)
+        vc.modalPresentationStyle = .fullScreen
         viewController.navigationController?.present(vc, animated: true)
     }
 
@@ -200,7 +204,8 @@ class TokensCardCoordinator: NSObject, Coordinator {
     private func makeRedeemTokensCardQuantitySelectionViewController(token: TokenObject, for tokenHolder: TokenHolder) -> RedeemTokenCardQuantitySelectionViewController {
         let viewModel = RedeemTokenCardQuantitySelectionViewModel(token: token, tokenHolder: tokenHolder, assetDefinitionStore: assetDefinitionStore)
         let controller = RedeemTokenCardQuantitySelectionViewController(token: token, viewModel: viewModel, assetDefinitionStore: assetDefinitionStore)
-		controller.configure()
+        controller.modalPresentationStyle = .fullScreen
+        controller.configure()
         controller.delegate = self
         return controller
     }
@@ -208,6 +213,7 @@ class TokensCardCoordinator: NSObject, Coordinator {
     private func makeEnterSellTokensCardPriceQuantityViewController(token: TokenObject, for tokenHolder: TokenHolder, paymentFlow: PaymentFlow) -> EnterSellTokensCardPriceQuantityViewController {
         let viewModel = EnterSellTokensCardPriceQuantityViewControllerViewModel(token: token, tokenHolder: tokenHolder, server: session.server, assetDefinitionStore: assetDefinitionStore)
         let controller = EnterSellTokensCardPriceQuantityViewController(storage: tokensStorage, paymentFlow: paymentFlow, cryptoPrice: ethPrice, viewModel: viewModel, assetDefinitionStore: assetDefinitionStore)
+        controller.modalPresentationStyle = .fullScreen
         controller.configure()
         controller.delegate = self
         return controller
@@ -216,6 +222,7 @@ class TokensCardCoordinator: NSObject, Coordinator {
     private func makeEnterTransferTokensCardExpiryDateViewController(token: TokenObject, for tokenHolder: TokenHolder, paymentFlow: PaymentFlow) -> SetTransferTokensCardExpiryDateViewController {
         let viewModel = SetTransferTokensCardExpiryDateViewControllerViewModel(token: token, tokenHolder: tokenHolder, assetDefinitionStore: assetDefinitionStore)
         let controller = SetTransferTokensCardExpiryDateViewController(tokenHolder: tokenHolder, paymentFlow: paymentFlow, viewModel: viewModel, assetDefinitionStore: assetDefinitionStore)
+        controller.modalPresentationStyle = .fullScreen
         controller.configure()
         controller.delegate = self
         return controller
@@ -224,6 +231,7 @@ class TokensCardCoordinator: NSObject, Coordinator {
     private func makeTransferTokensCardViaWalletAddressViewController(token: TokenObject, for tokenHolder: TokenHolder, paymentFlow: PaymentFlow) -> TransferTokensCardViaWalletAddressViewController {
         let viewModel = TransferTokensCardViaWalletAddressViewControllerViewModel(token: token, tokenHolder: tokenHolder, assetDefinitionStore: assetDefinitionStore)
         let controller = TransferTokensCardViaWalletAddressViewController(token: token, tokenHolder: tokenHolder, paymentFlow: paymentFlow, viewModel: viewModel, assetDefinitionStore: assetDefinitionStore)
+        controller.modalPresentationStyle = .fullScreen
         controller.configure()
         controller.delegate = self
         return controller
@@ -232,6 +240,7 @@ class TokensCardCoordinator: NSObject, Coordinator {
     private func makeEnterSellTokensCardExpiryDateViewController(token: TokenObject, for tokenHolder: TokenHolder, ethCost: Ether, paymentFlow: PaymentFlow) -> SetSellTokensCardExpiryDateViewController {
         let viewModel = SetSellTokensCardExpiryDateViewControllerViewModel(token: token, tokenHolder: tokenHolder, ethCost: ethCost, server: session.server, assetDefinitionStore: assetDefinitionStore)
         let controller = SetSellTokensCardExpiryDateViewController(storage: tokensStorage, paymentFlow: paymentFlow, tokenHolder: tokenHolder, ethCost: ethCost, viewModel: viewModel, assetDefinitionStore: assetDefinitionStore)
+        controller.modalPresentationStyle = .fullScreen
         controller.configure()
         controller.delegate = self
         return controller
@@ -240,7 +249,8 @@ class TokensCardCoordinator: NSObject, Coordinator {
     private func makeTokenCardRedemptionViewController(token: TokenObject, for tokenHolder: TokenHolder) -> TokenCardRedemptionViewController {
         let viewModel = TokenCardRedemptionViewModel(token: token, tokenHolder: tokenHolder)
         let controller = TokenCardRedemptionViewController(session: session, token: token, viewModel: viewModel, assetDefinitionStore: assetDefinitionStore)
-		controller.configure()
+        controller.modalPresentationStyle = .fullScreen
+        controller.configure()
         controller.delegate = self
         return controller
     }
@@ -248,6 +258,7 @@ class TokensCardCoordinator: NSObject, Coordinator {
     private func makeTransferTokensCardQuantitySelectionViewController(token: TokenObject, for tokenHolder: TokenHolder, paymentFlow: PaymentFlow) -> TransferTokensCardQuantitySelectionViewController {
         let viewModel = TransferTokensCardQuantitySelectionViewModel(token: token, tokenHolder: tokenHolder, assetDefinitionStore: assetDefinitionStore)
         let controller = TransferTokensCardQuantitySelectionViewController(paymentFlow: paymentFlow, token: token, viewModel: viewModel, assetDefinitionStore: assetDefinitionStore)
+        controller.modalPresentationStyle = .fullScreen
         controller.configure()
         controller.delegate = self
         return controller
@@ -256,6 +267,7 @@ class TokensCardCoordinator: NSObject, Coordinator {
     private func makeChooseTokenCardTransferModeViewController(token: TokenObject, for tokenHolder: TokenHolder, paymentFlow: PaymentFlow) -> ChooseTokenCardTransferModeViewController {
         let viewModel = ChooseTokenCardTransferModeViewControllerViewModel(token: token, tokenHolder: tokenHolder, assetDefinitionStore: assetDefinitionStore)
         let controller = ChooseTokenCardTransferModeViewController(tokenHolder: tokenHolder, paymentFlow: paymentFlow, viewModel: viewModel, assetDefinitionStore: assetDefinitionStore)
+        controller.modalPresentationStyle = .fullScreen
         controller.configure()
         controller.delegate = self
         return controller
@@ -321,6 +333,7 @@ class TokensCardCoordinator: NSObject, Coordinator {
             server: server
         )
         let vc = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        vc.modalPresentationStyle = .fullScreen
         vc.popoverPresentationController?.sourceView = sender
         vc.completionWithItemsHandler = { [weak self] activityType, completed, returnedItems, error in
             guard let strongSelf = self else { return }
@@ -345,6 +358,7 @@ class TokensCardCoordinator: NSObject, Coordinator {
 
         let url = generateTransferLink(tokenHolder: tokenHolder, linkExpiryDate: linkExpiryDate, server: server)
         let vc = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        vc.modalPresentationStyle = .fullScreen
         vc.popoverPresentationController?.sourceView = sender
         vc.completionWithItemsHandler = { [weak self] activityType, completed, returnedItems, error in
             guard let strongSelf = self else { return }
@@ -361,12 +375,14 @@ class TokensCardCoordinator: NSObject, Coordinator {
     private func showViewRedemptionInfo(in viewController: UIViewController) {
         let controller = TokenCardRedemptionInfoViewController(delegate: self)
         controller.navigationItem.largeTitleDisplayMode = .never
+        controller.modalPresentationStyle = .fullScreen
         viewController.navigationController?.pushViewController(controller, animated: true)
     }
 
     private func showViewEthereumInfo(in viewController: UIViewController) {
         let controller = WhatIsEthereumInfoViewController(delegate: self)
         controller.navigationItem.largeTitleDisplayMode = .never
+        controller.modalPresentationStyle = .fullScreen
         viewController.navigationController?.pushViewController(controller, animated: true)
     }
 
@@ -375,6 +391,7 @@ class TokensCardCoordinator: NSObject, Coordinator {
         vc.delegate = self
         vc.configure()
         vc.navigationItem.largeTitleDisplayMode = .never
+        vc.modalPresentationStyle = .fullScreen
         viewController.navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -383,6 +400,7 @@ class TokensCardCoordinator: NSObject, Coordinator {
         vc.delegate = self
         vc.configure()
         vc.navigationItem.largeTitleDisplayMode = .never
+        vc.modalPresentationStyle = .fullScreen
         viewController.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -419,6 +437,7 @@ extension TokensCardCoordinator: TokensCardViewControllerDelegate {
 
     func didTapURL(url: URL, in viewController: TokensCardViewController) {
         let controller = SFSafariViewController(url: url)
+        controller.modalPresentationStyle = .fullScreen
         // Don't attempt to change tint colors for SFSafariViewController. It doesn't well correctly especially because the controller sets more than 1 color for the title
         viewController.present(controller, animated: true, completion: nil)
     }
