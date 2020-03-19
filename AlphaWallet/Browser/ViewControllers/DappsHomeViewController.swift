@@ -65,7 +65,7 @@ class DappsHomeViewController: UIViewController {
         }
         let dimension = (availableWidth / numberOfColumns).rounded(.down)
         //Using a sizing cell doesn't get the same reason after we change network. Resorting to hardcoding the width and height difference
-        let itemSize = CGSize(width: dimension, height: dimension + 30)
+        let itemSize = CGSize(width: dimension, height: dimension + 10)
         let additionalGutter = (availableWidth - itemSize.width * numberOfColumns) / (numberOfColumns + 1)
         layout.itemSize = itemSize
         layout.minimumInteritemSpacing = 0

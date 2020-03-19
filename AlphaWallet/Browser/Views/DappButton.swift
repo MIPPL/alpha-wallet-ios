@@ -48,7 +48,8 @@ class DappButton: UIControl {
         } else {
             imageView.image = viewModel.imageForDisabledMode
         }
-
+        
+        imageView.tintColor = Colors.appTint
         label.font = viewModel.font
         label.textColor = viewModel.textColor
         label.text = viewModel.title

@@ -187,10 +187,11 @@ class SettingsViewController: FormViewController {
             cell.imageView?.image = R.image.settings_clear_dapp_cache()?.imageWithInsets(insets: self.iconInset)?.withRenderingMode(.alwaysTemplate)
         }
 
-        <<< linkProvider(type: .telegram)
+        <<< linkProvider(type: .telegramsocial)
+        <<< linkProvider(type: .telegramann)
         <<< linkProvider(type: .twitter)
-        <<< linkProvider(type: .reddit)
-        <<< linkProvider(type: .facebook)
+        <<< linkProvider(type: .linkedin)
+        <<< linkProvider(type: .discord)
         <<< AlphaWalletSettingsButtonRow { row in
             row.cellStyle = .value1
             row.presentationMode = .show(controllerProvider: ControllerProvider<UIViewController>.callback {

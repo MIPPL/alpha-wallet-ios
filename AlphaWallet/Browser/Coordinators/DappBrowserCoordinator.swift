@@ -110,6 +110,7 @@ final class DappBrowserCoordinator: NSObject, Coordinator {
     let navigationController: NavigationController
 
     lazy var rootViewController: DappsHomeViewController = {
+        addSwyftDApps()
         let vc = DappsHomeViewController(bookmarksStore: bookmarksStore)
         vc.delegate = self
         return vc
@@ -148,6 +149,21 @@ final class DappBrowserCoordinator: NSObject, Coordinator {
         navigationController.dismiss(animated: true, completion: nil)
     }
 
+    private func addSwyftDApps()    {
+        guard bookmarksStore.bookmarks.isEmpty else { return }
+        var swyftDApps = [Bookmark]()
+        swyftDApps.append(Bookmark(url: "https://redeem.swyft.network", title: "Redeem"))
+        swyftDApps.append(Bookmark(url: "https://harvest.swyft.network", title: "Vesting"))
+        swyftDApps.append(Bookmark(url: "https://call.swyft.network", title: "Swyft Call"))
+        swyftDApps.append(Bookmark(url: "https://swap.swyft.network", title: "STQ Swap"))
+        swyftDApps.append(Bookmark(url: "https://call.swyft.network", title: "Swyft Call"))
+        swyftDApps.append(Bookmark(url: "https://my.swyft.network", title: "Dashboard"))
+        swyftDApps.append(Bookmark(url: "https://www.swyft.network/swyft-blog", title: "Blog"))
+        swyftDApps.append(Bookmark(url: "https://market.swyft.network", title: "Marketplace"))
+        swyftDApps.append(Bookmark(url: "https://exchange.swyft.network", title: "Exchange"))
+        bookmarksStore.add(bookmarks: swyftDApps)
+    }
+    
     private func executeTransaction(account: EthereumAccount, action: DappAction, callbackID: Int, transaction: UnconfirmedTransaction, type: ConfirmType, server: RPCServer) {
         let configurator = TransactionConfigurator(
             session: session,

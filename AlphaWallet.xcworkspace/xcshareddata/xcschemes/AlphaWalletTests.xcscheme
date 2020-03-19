@@ -17,7 +17,7 @@
                BlueprintIdentifier = "2912CCF41F6A830700C6CBE3"
                BuildableName = "AlphaWallet.app"
                BlueprintName = "AlphaWallet"
-               ReferencedContainer = "container:AlphaWallet.xcodeproj">
+               ReferencedContainer = "container:SwyftEcoWallet.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -27,6 +27,15 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2912CCF41F6A830700C6CBE3"
+            BuildableName = "AlphaWallet.app"
+            BlueprintName = "AlphaWallet"
+            ReferencedContainer = "container:SwyftEcoWallet.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -35,21 +44,10 @@
                BlueprintIdentifier = "2912CD0A1F6A830700C6CBE3"
                BuildableName = "AlphaWalletTests.xctest"
                BlueprintName = "AlphaWalletTests"
-               ReferencedContainer = "container:AlphaWallet.xcodeproj">
+               ReferencedContainer = "container:SwyftEcoWallet.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2912CCF41F6A830700C6CBE3"
-            BuildableName = "AlphaWallet.app"
-            BlueprintName = "AlphaWallet"
-            ReferencedContainer = "container:AlphaWallet.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -68,7 +66,7 @@
             BlueprintIdentifier = "2912CCF41F6A830700C6CBE3"
             BuildableName = "AlphaWallet.app"
             BlueprintName = "AlphaWallet"
-            ReferencedContainer = "container:AlphaWallet.xcodeproj">
+            ReferencedContainer = "container:SwyftEcoWallet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -83,8 +81,6 @@
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
-      <AdditionalOptions>
-      </AdditionalOptions>
       <LocationScenarioReference
          identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
          referenceType = "1">
@@ -102,7 +98,7 @@
             BlueprintIdentifier = "2912CCF41F6A830700C6CBE3"
             BuildableName = "AlphaWallet.app"
             BlueprintName = "AlphaWallet"
-            ReferencedContainer = "container:AlphaWallet.xcodeproj">
+            ReferencedContainer = "container:SwyftEcoWallet.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

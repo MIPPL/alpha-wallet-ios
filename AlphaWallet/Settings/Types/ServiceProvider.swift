@@ -4,31 +4,35 @@ import Foundation
 import UIKit
 
 enum URLServiceProvider {
-    case telegram
+    case telegramsocial
+    case telegramann
     case twitter
-    case reddit
-    case facebook
+    case linkedin
+    case discord
 
     var title: String {
         switch self {
-        case .telegram: return "Telegram"
+        case .telegramsocial: return "Telegram Social"
+        case .telegramann: return "Telegram ANN"
         case .twitter: return "Twitter"
-        case .reddit: return "Reddit"
-        case .facebook: return "Facebook"
+        case .linkedin: return "LinkedIn"
+        case .discord: return "Discord"
         }
     }
 
     //TODO should probably change or remove `localURL` since iOS supports deep links now
     var localURL: URL? {
         switch self {
-        case .telegram:
-            return URL(string: "https://t.me/AlphaWalletGroup")!
+        case .telegramsocial:
+            return URL(string: "https://t.me/SWYFTCHAT")!
+        case .telegramann:
+            return URL(string: "https://t.me/SWYFTLTD")!
         case .twitter:
             return URL(string: "twitter://user?screen_name=\(Constants.twitterUsername)")!
-        case .reddit:
-            return URL(string: "reddit.com\(Constants.redditGroupName)")
-        case .facebook:
-            return URL(string: "fb://profile?id=\(Constants.facebookUsername)")
+        case .linkedin:
+            return URL(string: "https://www.linkedin.com/company/swyft-network/")
+        case .discord:
+            return URL(string: "https://discord.gg/t4rWn8R")
         }
     }
 
@@ -38,23 +42,26 @@ enum URLServiceProvider {
 
     private var remoteURLString: String {
         switch self {
-        case .telegram:
-            return "https://t.me/AlphaWalletGroup"
+        case .telegramsocial:
+            return "https://t.me/SWYFTCHAT"
+        case .telegramann:
+            return "https://t.me/SWYFTLTD"
         case .twitter:
             return "https://twitter.com/\(Constants.twitterUsername)"
-        case .reddit:
-            return "https://reddit.com/\(Constants.redditGroupName)"
-        case .facebook:
-            return "https://www.facebook.com/\(Constants.facebookUsername)"
+        case .linkedin:
+            return "https://www.linkedin.com/company/swyft-network/"
+        case .discord:
+            return "https://discord.gg/t4rWn8R"
         }
     }
 
     var image: UIImage? {
         switch self {
-        case .telegram: return R.image.settings_telegram()
+        case .telegramsocial: return R.image.settings_telegram()
+        case .telegramann: return R.image.settings_telegram()
         case .twitter: return R.image.settings_twitter()
-        case .reddit: return R.image.settings_reddit()
-        case .facebook: return R.image.settings_facebook()
+        case .linkedin: return R.image.settings_reddit()
+        case .discord: return R.image.settings_facebook()
         }
     }
 }

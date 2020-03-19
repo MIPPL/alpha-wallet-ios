@@ -12,7 +12,7 @@ protocol DappViewCellDelegate: class {
 class DappViewCell: UICollectionViewCell {
     static let identifier = "DappViewCell"
 
-    private let marginAroundImage = CGFloat(7)
+    private let marginAroundImage = CGFloat(30)
     private let jiggleAnimationKey = "jiggle"
     private var viewModel: DappViewCellViewModel?
     private var currentDisplayedImageUrl: URL?
